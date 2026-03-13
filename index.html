@@ -103,9 +103,9 @@
         .films-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .film-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 15px; overflow: hidden; transition: 0.4s; }
         .film-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .video-wrapper { position: relative; aspect-ratio: 16/9; background: #000; }
+        .video-wrapper { position: relative; aspect-ratio: 16/9; background: #000; min-height: 180px; }
         .video-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: white; opacity: 0.8; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: white; opacity: 0.8; z-index: 1; }
 
         .film-info { padding: 25px; }
         .film-info h3 { margin: 0; font-size: 1.4rem; color: #fff; }
@@ -135,7 +135,6 @@
             will-change: transform, box-shadow;
         }
 
-        /* NEW ANALYTICS GLOW AND ENLARGE EFFECT */
         .social-grid img:hover { 
             border-color: var(--accent); 
             transform: scale(1.2); 
@@ -147,7 +146,6 @@
         .contact-link { padding: 30px; background: var(--card-bg); border-radius: 15px; text-decoration: none; color: var(--text); border: 1px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; }
         .contact-link:hover { border-color: var(--accent); background: #1a1a1a; }
 
-        /* GOLDEN CONTACT GRAPHICS */
         .contact-link i { color: var(--accent) !important; }
 
         footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 50px; }
@@ -183,42 +181,42 @@
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, 'YAnR2zt4Qfo')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/YAnR2zt4Qfo/mqdefault.jpg" alt="Ek Laash Ki Casting" loading="eager">
+                    <img src="https://img.youtube.com/vi/YAnR2zt4Qfo/maxresdefault.jpg" alt="Ek Laash Ki Casting" loading="eager">
                 </div>
                 <div class="film-info"><h3>Ek Laash Ki Casting (2026)</h3><p><b>Role:</b> Cinematography</p></div>
             </div>
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, 'Lv5qtAtIV7E')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/Lv5qtAtIV7E/mqdefault.jpg" alt="Bihari Mati Apna" loading="eager">
+                    <img src="https://img.youtube.com/vi/Lv5qtAtIV7E/maxresdefault.jpg" alt="Bihari Mati Apna" loading="eager">
                 </div>
                 <div class="film-info"><h3>Bihari Mati Apna (2023)</h3><p><b>Role:</b> Direction & Screenplay</p></div>
             </div>
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, 'Hte7B5KoKj0')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/Hte7B5KoKj0/mqdefault.jpg" alt="Blurred" loading="lazy">
+                    <img src="https://img.youtube.com/vi/Hte7B5KoKj0/maxresdefault.jpg" alt="Blurred" loading="lazy">
                 </div>
                 <div class="film-info"><h3>Blurred (2025)</h3><p><b>Role:</b> Cinematography</p></div>
             </div>
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, 'AWv2lH9_rAc')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/AWv2lH9_rAc/mqdefault.jpg" alt="Stop War" loading="lazy">
+                    <img src="https://img.youtube.com/vi/AWv2lH9_rAc/maxresdefault.jpg" alt="Stop War" loading="lazy">
                 </div>
                 <div class="film-info"><h3>Stop War Awareness (2024)</h3><p><b>Role:</b> Direction & Cinematography</p></div>
             </div>
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, '-wm6WEyKdTA')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/-wm6WEyKdTA/mqdefault.jpg" alt="Maya" loading="lazy">
+                    <img src="https://img.youtube.com/vi/-wm6WEyKdTA/maxresdefault.jpg" alt="Maya" loading="lazy">
                 </div>
                 <div class="film-info"><h3>Maya (2024)</h3><p><b>Role:</b> Direction, Screenplay, DOP & Editing</p></div>
             </div>
             <div class="film-card stagger-item">
                 <div class="video-wrapper" onclick="openVideo(this, '-FwVpQ6fGtc')">
                     <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/-FwVpQ6fGtc/mqdefault.jpg" alt="When the Music Stops" loading="lazy">
+                    <img src="https://img.youtube.com/vi/-FwVpQ6fGtc/maxresdefault.jpg" alt="When the Music Stops" loading="lazy">
                 </div>
                 <div class="film-info"><h3>When the Music Stops (2025)</h3><p><b>Role:</b> Direction & Cinematography</p></div>
             </div>
@@ -292,7 +290,6 @@
     <footer>© 2026 <a href="#top">Shlok Kishore</a> | All Rights Reserved.</footer>
 
     <script>
-        // Use requestAnimationFrame for smoother performance
         function openVideo(container, id) {
             requestAnimationFrame(() => {
                 container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen style="position: absolute; top:0; left:0;"></iframe>`;
@@ -304,7 +301,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // CURSOR LOGIC - Performance Optimized
         const cursor = document.getElementById('cursor');
         const follower = document.getElementById('cursor-follower');
         
@@ -314,12 +310,10 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            // Immediate inner dot movement
             cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
         });
 
         function animateFollower() {
-            // Lagging follower movement
             followerX += (mouseX - followerX - 20) * 0.1;
             followerY += (mouseY - followerY - 20) * 0.1;
             follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
