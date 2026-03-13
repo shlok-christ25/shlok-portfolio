@@ -34,20 +34,14 @@
             justify-content: center;
             text-align: center;
             padding: 0 20px;
-            /* Optimized for all devices */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('profile(shlok).jpeg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax for Desktop */
+            background-attachment: fixed;
         }
 
-        /* FIX FOR IPHONE/MOBILE BACKGROUND */
         @media (max-width: 768px) {
-            header {
-                background-attachment: scroll !important; /* Forces iPhone to show the image */
-                background-position: center center;
-                height: 80vh; /* Adjusts height for mobile browsers */
-            }
+            header { background-attachment: scroll !important; height: 80vh; }
             section { padding: 60px 5% !important; }
             .hero-content h1 { font-size: 3.5rem !important; }
         }
@@ -104,10 +98,7 @@
             transition: 0.4s ease;
         }
 
-        .film-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
+        .film-card:hover { transform: translateY(-10px); border-color: var(--accent); }
 
         .video-wrapper {
             position: relative;
@@ -117,12 +108,7 @@
             background: #000;
         }
 
-        .video-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
+        .video-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 
         .play-btn {
             position: absolute;
@@ -130,7 +116,6 @@
             transform: translate(-50%, -50%);
             font-size: 50px;
             opacity: 0.8;
-            transition: 0.3s;
             z-index: 2;
         }
 
@@ -138,6 +123,39 @@
         .film-info h3 { margin: 0; font-size: 1.4rem; }
         .film-info p { margin: 5px 0; font-size: 0.95rem; }
         .film-info b { color: var(--accent); }
+
+        /* --- SOFTWARE LOGOS --- */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .software-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            filter: grayscale(1);
+            transition: 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .software-item:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
+
+        .software-item img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .software-item span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+        }
 
         /* --- DIGITAL STRATEGY / ANALYTICS --- */
         .stats-container {
@@ -166,42 +184,15 @@
             margin-top: 30px;
         }
 
-        .social-grid img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
+        .social-grid img { width: 100%; border-radius: 10px; border: 1px solid var(--border); }
 
         /* --- SKILLS --- */
-        .skills-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-item {
-            border: 1px solid var(--border);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-        }
+        .skills-flex { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-item { border: 1px solid var(--border); padding: 10px 20px; border-radius: 50px; font-size: 0.85rem; }
 
         /* --- CONTACT --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .contact-link {
-            padding: 25px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            text-decoration: none;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .contact-link { padding: 25px; background: var(--card-bg); border-radius: 15px; text-decoration: none; color: var(--text); border: 1px solid var(--border); }
         .contact-link span { color: var(--accent); font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 5px; }
 
         footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px; }
@@ -287,6 +278,36 @@
                     <p><b>Role:</b> Cinematography / Director of Photography</p>
                     <p><b>Duration:</b> 9m 51s</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <h2>Creative <span>Suite</span></h2>
+        <div class="software-grid">
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/adobepremierepro/EA77FF" alt="Premiere Pro">
+                <span>Premiere Pro</span>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/adobeaftereffects/9999FF" alt="After Effects">
+                <span>After Effects</span>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/davinciresolve/000000" alt="DaVinci Resolve">
+                <span>DaVinci Resolve</span>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/adobephotoshop/31A8FF" alt="Photoshop">
+                <span>Photoshop</span>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/adobelightroom/31A8FF" alt="Lightroom">
+                <span>Lightroom</span>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva">
+                <span>Canva</span>
             </div>
         </div>
     </section>
