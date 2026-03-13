@@ -27,6 +27,7 @@
             color: var(--text);
             margin: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
@@ -56,7 +57,7 @@
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 5px;
@@ -79,12 +80,48 @@
             border: 1px solid var(--border); 
             border-radius: 15px; 
             overflow: hidden; 
-            transition: 0.4s; 
+            transition: transform 0.4s ease, border-color 0.4s ease; 
         }
-        .film-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .video-wrapper { position: relative; cursor: pointer; aspect-ratio: 16/9; background: #000; }
-        .video-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; opacity: 0.8; color: white; }
+        
+        /* HOVER UPGRADE */
+        .film-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--accent); 
+        }
+
+        .video-wrapper { 
+            position: relative; 
+            cursor: pointer; 
+            aspect-ratio: 16/9; 
+            background: #000; 
+            overflow: hidden; /* Keeps zoom contained */
+        }
+        
+        .video-wrapper img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s ease; /* Smooth zoom duration */
+        }
+        
+        .film-card:hover .video-wrapper img {
+            transform: scale(1.1); /* Zoom effect */
+        }
+
+        .play-btn { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-size: 50px; 
+            opacity: 0.8; 
+            color: white; 
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+        
+        .film-card:hover .play-btn { opacity: 1; }
+
         .film-info { padding: 25px; }
         .film-info h3 { margin: 0; font-size: 1.4rem; color: #fff; }
         .film-info p { color: var(--text-dim); margin-top: 8px; font-size: 0.9rem; }
@@ -124,15 +161,16 @@
         .stat-box { background: rgba(255,255,255,0.03); padding: 30px 10px; border-radius: 15px; text-align: center; border: 1px solid var(--border); }
         .stat-box h3 { font-size: 2.5rem; margin: 0; color: var(--accent); }
         .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .social-grid img { width: 100%; border-radius: 10px; border: 1px solid var(--border); }
+        .social-grid img { width: 100%; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
+        .social-grid img:hover { border-color: var(--accent); transform: scale(1.02); }
 
         /* CONTACT */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .contact-link { padding: 25px; background: var(--card-bg); border-radius: 15px; text-decoration: none; color: var(--text); border: 1px solid var(--border); transition: 0.3s; }
-        .contact-link:hover { border-color: var(--accent); background: #1a1a1a; }
+        .contact-link:hover { border-color: var(--accent); background: #1a1a1a; transform: translateY(-3px); }
         .contact-link span { color: var(--accent); font-size: 0.7rem; display: block; margin-bottom: 5px; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem; }
+        footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 50px; }
         
         /* REVEAL ANIMATION */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
@@ -148,9 +186,10 @@
         </div>
     </header>
 
-   <section id="work" class="reveal">
+    <section id="work" class="reveal">
         <h2>Featured <span>Films</span></h2>
         <div class="films-grid">
+            
             <div class="film-card">
                 <div class="video-wrapper" onclick="openVideo(this, 'YAnR2zt4Qfo')">
                     <div class="play-btn">▶</div>
@@ -216,6 +255,7 @@
                     <p><b>Role:</b> Direction & Cinematography</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -269,14 +309,16 @@
     </section>
 
     <footer>
-        © 2026 Shlok Kishore
+        © 2026 Shlok Kishore | All Rights Reserved.
     </footer>
 
     <script>
+        // Video embed logic
         function openVideo(container, id) {
             container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top:0; left:0;"></iframe>`;
         }
 
+        // Scroll reveal logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
