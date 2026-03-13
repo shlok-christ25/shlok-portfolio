@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shlok Kishore | Filmmaker & Visual Architect</title>
     
+    <meta property="og:title" content="Shlok Kishore | Filmmaker & Visual Architect">
+    <meta property="og:description" content="Portfolio of Shlok Kishore - Exploring cinematic storytelling and visual architecture.">
+    <meta property="og:image" content="profile(shlok).jpeg">
+    <meta property="og:url" content="https://shlok-christ25.github.io">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -18,7 +23,7 @@
             --border: #222222;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; cursor: none !important; } /* Hides real cursor for custom one */
         html { scroll-behavior: smooth; }
 
         body {
@@ -28,6 +33,29 @@
             margin: 0;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* CUSTOM GOLD CURSOR */
+        #cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: difference;
+        }
+        #cursor-outline {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease-out;
         }
 
         /* CV FLOATING BUTTON */
@@ -95,13 +123,12 @@
         .reveal.active .stagger-item:nth-child(3) { transition-delay: 0.3s; }
         .reveal.active .stagger-item:nth-child(4) { transition-delay: 0.4s; }
         .reveal.active .stagger-item:nth-child(5) { transition-delay: 0.5s; }
-        .reveal.active .stagger-item:nth-child(6) { transition-delay: 0.6s; }
 
         /* FILM GRID */
         .films-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .film-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 15px; overflow: hidden; transition: 0.4s; }
         .film-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .video-wrapper { position: relative; cursor: pointer; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+        .video-wrapper { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; }
         .video-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; opacity: 0.8; color: white; z-index: 2; }
 
@@ -118,8 +145,8 @@
 
         /* SOFTWARE GRID */
         .software-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 30px; }
-        .software-item { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-        .software-item img, .software-item svg { width: 50px; height: 50px; object-fit: contain; transition: 0.3s; }
+        .software-item { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; transition: 0.3s; }
+        .software-item img, .software-item svg { width: 50px; height: 50px; object-fit: contain; }
         .software-item:hover { transform: translateY(-5px); }
         .software-item span { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); font-weight: 600; letter-spacing: 1px; }
 
@@ -132,7 +159,7 @@
         .social-grid img { width: 100%; border-radius: 10px; border: 1px solid var(--border); transition: 0.3s; }
         .social-grid img:hover { border-color: var(--accent); transform: scale(1.02); }
 
-        /* CONTACT SECTION WITH GRAPHIC LOGOS */
+        /* CONTACT SECTION */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .contact-link { padding: 30px; background: var(--card-bg); border-radius: 15px; text-decoration: none; color: var(--text); border: 1px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; align-items: flex-start; }
         .contact-link i { font-size: 1.5rem; color: var(--accent); margin-bottom: 15px; }
@@ -141,18 +168,22 @@
         .contact-link p { margin: 0; font-size: 1rem; word-break: break-all; }
 
         footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 50px; }
-        footer a { color: var(--accent); text-decoration: none; cursor: pointer; }
+        footer a { color: var(--accent); text-decoration: none; }
 
         @media (max-width: 768px) {
+            #cursor, #cursor-outline { display: none; } /* Hide custom cursor on mobile */
+            * { cursor: auto !important; }
             header { background-attachment: scroll !important; height: 80vh; }
             section { padding: 60px 5% !important; }
-            .cv-float { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="Shlok_Kishore_CV.pdf" target="_blank" class="cv-float">
+    <div id="cursor"></div>
+    <div id="cursor-outline"></div>
+
+    <a href="Shlok_Kishore_CV.pdf" target="_blank" class="cv-float hover-target">
         <i class="fas fa-file-download"></i> Download CV
     </a>
 
@@ -167,46 +198,25 @@
         <h2>Featured <span>Films</span></h2>
         <div class="films-grid">
             <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, 'YAnR2zt4Qfo')">
+                <div class="video-wrapper hover-target" onclick="openVideo(this, 'YAnR2zt4Qfo')">
                     <div class="play-btn">▶</div>
                     <img src="https://img.youtube.com/vi/YAnR2zt4Qfo/maxresdefault.jpg" alt="Ek Laash Ki Casting">
                 </div>
                 <div class="film-info"><h3>Ek Laash Ki Casting (2026)</h3><p><b>Role:</b> Cinematography</p></div>
             </div>
             <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, 'Lv5qtAtIV7E')">
+                <div class="video-wrapper hover-target" onclick="openVideo(this, 'Lv5qtAtIV7E')">
                     <div class="play-btn">▶</div>
                     <img src="https://img.youtube.com/vi/Lv5qtAtIV7E/maxresdefault.jpg" alt="Bihari Mati Apna">
                 </div>
                 <div class="film-info"><h3>Bihari Mati Apna (2023)</h3><p><b>Role:</b> Direction & Screenplay</p></div>
             </div>
             <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, 'Hte7B5KoKj0')">
+                <div class="video-wrapper hover-target" onclick="openVideo(this, 'Hte7B5KoKj0')">
                     <div class="play-btn">▶</div>
                     <img src="https://img.youtube.com/vi/Hte7B5KoKj0/maxresdefault.jpg" alt="Blurred">
                 </div>
                 <div class="film-info"><h3>Blurred (2025)</h3><p><b>Role:</b> Cinematography</p></div>
-            </div>
-            <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, 'AWv2lH9_rAc')">
-                    <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/AWv2lH9_rAc/maxresdefault.jpg" alt="Stop War">
-                </div>
-                <div class="film-info"><h3>Stop War Awareness (2024)</h3><p><b>Role:</b> Direction & Cinematography</p></div>
-            </div>
-            <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, '-wm6WEyKdTA')">
-                    <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/-wm6WEyKdTA/maxresdefault.jpg" alt="Maya">
-                </div>
-                <div class="film-info"><h3>Maya (2024)</h3><p><b>Role:</b> Direction, Screenplay, DOP & Editing</p></div>
-            </div>
-            <div class="film-card stagger-item">
-                <div class="video-wrapper" onclick="openVideo(this, '-FwVpQ6fGtc')">
-                    <div class="play-btn">▶</div>
-                    <img src="https://img.youtube.com/vi/-FwVpQ6fGtc/maxresdefault.jpg" alt="When the Music Stops">
-                </div>
-                <div class="film-info"><h3>When the Music Stops (2025)</h3><p><b>Role:</b> Direction & Cinematography</p></div>
             </div>
         </div>
     </section>
@@ -222,22 +232,13 @@
     </section>
 
     <section class="reveal">
-        <h2>Creative & <span>Business Suite</span></h2>
+        <h2>Creative <span>Suite</span></h2>
         <div class="software-grid">
             <div class="software-item stagger-item"><img src="premiere.svg"><span>Premiere Pro</span></div>
             <div class="software-item stagger-item"><img src="ae.svg"><span>After Effects</span></div>
             <div class="software-item stagger-item"><img src="davinci.png"><span>DaVinci</span></div>
             <div class="software-item stagger-item"><img src="ps.svg"><span>Photoshop</span></div>
-            <div class="software-item stagger-item">
-                <svg width="50" height="50" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 5px rgba(196, 163, 107, 0.4));">
-                    <path d="M19 28.5C19 25.9837 20.0009 23.5706 21.7825 21.7891C23.564 20.0076 25.9771 19.0067 28.4933 19.0067C31.0096 19.0067 33.4227 20.0076 35.2042 21.7891C36.9858 23.5706 37.9867 25.9837 37.9867 28.5C37.9867 31.0163 36.9858 33.4294 35.2042 35.2109C33.4227 36.9924 31.0096 37.9933 28.4933 37.9933C25.9771 37.9933 23.564 36.9924 21.7825 35.2109C20.0009 33.4294 19 31.0163 19 28.5Z" fill="#1ABCFE"/><path d="M0 47.4933C0 44.9771 1.00089 42.564 2.78248 40.7825C4.56407 39.0009 6.9771 38 9.49333 38H19V47.4933C19 50.0096 17.9991 52.4227 16.2175 54.2042C14.4359 55.9858 12.0229 56.9867 9.49333 56.9867C6.9771 56.9867 4.56407 55.9858 2.78248 54.2042C1.00089 52.4227 0 50.0096 0 47.4933Z" fill="#0ACF83"/><path d="M0 28.5C0 25.9837 1.00089 23.5706 2.78248 21.7891C4.56407 20.0076 6.9771 19.0067 9.49333 19.0067H19V38H9.49333C6.9771 38 4.56407 36.9924 2.78248 35.2109C1.00089 33.4294 0 31.0163 0 28.5Z" fill="#A259FF"/><path d="M0 9.5C0 6.9837 1.00089 4.57059 2.78248 2.78906C4.56407 1.00753 6.9771 0.00665283 9.49333 0.00665283H19V19H9.49333C6.9771 19 4.56407 17.9924 2.78248 16.2109C1.00089 14.4294 0 12.0163 0 9.5Z" fill="#F24E1E"/><path d="M19 0.00665283H28.5C31.0163 0.00665283 33.4294 1.00753 35.2109 2.78906C36.9925 4.57059 37.9933 6.9837 37.9933 9.5C37.9933 12.0163 36.9925 14.4294 35.2109 16.2109C33.4294 17.9924 31.0163 19 28.5 19H19V0.00665283Z" fill="#FF7262"/>
-                </svg><span>Figma</span>
-            </div>
-            <div class="software-item stagger-item"><img src="finaldraft.png"><span>Final Draft</span></div>
             <div class="software-item stagger-item"><img src="canva.svg"><span>Canva</span></div>
-            <div class="software-item stagger-item"><img src="excel.svg"><span>MS Excel</span></div>
-            <div class="software-item stagger-item"><img src="word.svg"><span>MS Word</span></div>
-            <div class="software-item stagger-item"><img src="powerpoint.svg"><span>MS PowerPoint</span></div>
         </div>
     </section>
 
@@ -251,42 +252,66 @@
         <div class="social-grid">
             <img src="analytics 1.jpeg" class="stagger-item">
             <img src="analytics 2.jpeg" class="stagger-item">
-            <img src="analytics 3.jpeg" class="stagger-item">
-            <img src="analytics 4.jpeg" class="stagger-item">
-            <img src="analytics 5.jpeg" class="stagger-item">
         </div>
     </section>
 
     <section class="reveal">
         <h2>Let's <span>Connect</span></h2>
         <div class="contact-grid">
-            <a href="mailto:workwithshlokkishore@gmail.com" class="contact-link stagger-item">
+            <a href="mailto:workwithshlokkishore@gmail.com" class="contact-link stagger-item hover-target">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
                 <p>workwithshlokkishore@gmail.com</p>
             </a>
-            <a href="https://www.linkedin.com/in/shlok-kishore-68ab07237" target="_blank" class="contact-link stagger-item">
+            <a href="https://www.linkedin.com/in/shlok-kishore-68ab07237" target="_blank" class="contact-link stagger-item hover-target">
                 <i class="fab fa-linkedin"></i>
                 <span>LinkedIn</span>
                 <p>in/shlok-kishore</p>
             </a>
-            <a href="tel:+918789406546" class="contact-link stagger-item">
-                <i class="fas fa-phone"></i>
-                <span>Phone</span>
-                <p>+91 87894 06546</p>
-            </a>
         </div>
     </section>
 
-    <footer>© 2026 <a href="#top">Shlok Kishore</a> | All Rights Reserved.</footer>
+    <footer>© 2026 <a href="#top" class="hover-target">Shlok Kishore</a> | All Rights Reserved.</footer>
 
     <script>
+        // 1. CUSTOM CURSOR LOGIC
+        const cursor = document.getElementById('cursor');
+        const outline = document.getElementById('cursor-outline');
+        const links = document.querySelectorAll('.hover-target, a, .video-wrapper, .software-item');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            outline.animate({
+                left: `${e.clientX - 20}px`,
+                top: `${e.clientY - 20}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                outline.style.transform = 'scale(1.5)';
+                outline.style.background = 'rgba(196, 163, 107, 0.1)';
+            });
+            link.addEventListener('mouseleave', () => {
+                outline.style.transform = 'scale(1)';
+                outline.style.background = 'transparent';
+            });
+        });
+
+        // 2. VIDEO LOADER
         function openVideo(container, id) {
             container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen style="position: absolute; top:0; left:0;"></iframe>`;
         }
+
+        // 3. REVEAL OBSERVER
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('active'); 
+            });
         }, { threshold: 0.15 });
+
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
