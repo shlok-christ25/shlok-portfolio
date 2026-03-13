@@ -193,7 +193,48 @@
         </div>
     </section>
 
-   <section class="reveal">
+   <style>
+    /* --- UPDATED SOFTWARE LOGO STYLES --- */
+    .software-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .software-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .software-item img {
+        width: 50px;   /* Adjusted size for better visibility */
+        height: 50px;
+        object-fit: contain;
+        /* Removed all filters and low opacity so they stay bright and visible */
+        filter: none; 
+        opacity: 1;
+        transition: transform 0.3s ease;
+    }
+
+    /* Small lift effect when hovering, but colors stay the same */
+    .software-item:hover img {
+        transform: translateY(-5px);
+    }
+
+    .software-item span {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-dim);
+        font-weight: 600;
+    }
+</style>
+
+<section class="reveal">
     <h2>Creative <span>Suite</span></h2>
     <div class="software-grid">
         <div class="software-item">
