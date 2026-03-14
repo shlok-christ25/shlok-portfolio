@@ -57,11 +57,11 @@
             background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0.2) 100%), url('profile(shlok).jpeg');
             background-size: cover; background-position: center; z-index: 0;
         }
+        
         .hero-content { position: relative; z-index: 1; text-align: center; padding: 0 15px; width: 100%; }
         
         .hero-content h1 { 
             font-family: 'Bebas Neue', sans-serif; 
-            /* Optimized scaling for mobile to prevent overflow */
             font-size: clamp(3.2rem, 15vw, 11rem); 
             margin: 0; 
             line-height: 0.85; 
@@ -87,13 +87,12 @@
         }
         
         @media (max-width: 480px) {
-            .hero-subtitle { letter-spacing: 2px; } /* Prevent wrapping issues on very small phones */
+            .hero-subtitle { letter-spacing: 2px; }
             .hero-subtitle span { margin: 0 5px; }
         }
 
         .hero-subtitle span { color: var(--accent); margin: 0 10px; font-size: 1.1rem; vertical-align: middle; }
 
-        /* Rest of the design kept exactly as before */
         .slider-container { position: relative; width: 100%; overflow: visible; padding: 0; }
         .section-label { font-family: 'Montserrat', sans-serif; padding-left: 6%; font-size: 0.8rem; font-weight: 800; margin-bottom: 25px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
         .netflix-row { display: flex; overflow-x: auto; overflow-y: hidden; padding: 20px 6% 60px; gap: 20px; scroll-behavior: smooth; scrollbar-width: none; }
@@ -278,11 +277,8 @@
         const viewport = document.getElementById('viewport');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
         if (!isMobile) {
