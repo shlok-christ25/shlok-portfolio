@@ -7,14 +7,14 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;600;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --bg: #050505;
             --accent: #C4A36B; 
-            --accent-light: #F1D4A3; /* Lighter gold for gradient */
+            --accent-light: #F1D4A3; 
             --text: #FFFFFF;
             --text-dim: #A0A0A0;
             --border: #222222;
@@ -41,12 +41,12 @@
         }
         nav.scrolled {
             padding: 15px 6%;
-            background: rgba(15, 15, 15, 0.7);
+            background: rgba(15, 15, 15, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(196, 163, 107, 0.2);
         }
-        .logo { font-family: 'Anton', sans-serif; font-weight: 400; color: var(--accent); letter-spacing: 2px; font-size: 1.1rem; text-transform: uppercase; }
+        .logo { font-family: 'Cinzel Decorative', serif; font-weight: 700; color: var(--accent); letter-spacing: 1px; font-size: 1rem; }
 
         header { 
             height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;
@@ -54,40 +54,41 @@
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.1), var(--bg)), url('profile(shlok).jpeg');
+            /* Added a slightly darker radial gradient to focus on the center text */
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(5,5,5,0.8) 100%), url('profile(shlok).jpeg');
             background-size: cover; background-position: center; z-index: 0;
         }
         .hero-content { position: relative; z-index: 1; text-align: center; padding: 0 20px; }
         
-        /* THE "BEST" CINEMATIC FONT: ANTON WITH GRADIENT & SHADOW */
         .hero-content h1 { 
-            font-family: 'Anton', sans-serif; 
-            font-size: clamp(3rem, 11vw, 7.5rem); 
+            font-family: 'Cinzel Decorative', serif; 
+            font-size: clamp(2.5rem, 10vw, 6.5rem); 
             margin: 0; 
-            line-height: 0.95; 
-            font-weight: 400; /* Anton only has one weight */
+            line-height: 1.1; 
+            font-weight: 900;
             text-transform: uppercase;
             
-            /* Give it a subtle metallic gold gradient */
-            background: linear-gradient(to bottom, #fff 0%, #fff 40%, var(--accent-light) 60%, var(--accent) 100%);
+            /* Gold to White Gradient */
+            background: linear-gradient(135deg, var(--accent) 0%, #fff 50%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             
-            letter-spacing: -1px;
-            /* Extra deep shadow to ensure it works on any part of the image */
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
+            letter-spacing: 4px;
+            /* Enhanced Shadow to prevent background interference */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
         }
         
         .hero-subtitle { 
             font-family: 'Montserrat', sans-serif;
-            margin-top: 25px; 
+            margin-top: 15px; 
             font-weight: 400; 
             color: var(--text-dim); 
-            letter-spacing: 6px; 
+            letter-spacing: 8px; 
             text-transform: uppercase; 
-            font-size: clamp(0.55rem, 1.8vw, 0.8rem); 
+            font-size: clamp(0.5rem, 1.5vw, 0.75rem); 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
-        .hero-subtitle span { color: var(--accent); margin: 0 12px; font-size: 1rem; vertical-align: middle; }
+        .hero-subtitle span { color: var(--accent); margin: 0 10px; font-size: 0.9rem; }
 
         .slider-container { position: relative; width: 100%; overflow: visible; padding: 0; }
         
@@ -129,14 +130,10 @@
         .poster-info h3 { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; margin: 0; font-weight: 800; color: var(--text); letter-spacing: 0.5px; text-transform: uppercase; }
         .poster-info p { font-size: 0.6rem; color: var(--accent); margin-top: 4px; font-weight: 600; text-transform: uppercase; }
 
-        /* BTS - Black & White to Color */
         .bts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 0 6%; margin-bottom: 80px; }
         @media (max-width: 768px) { .bts-grid { grid-template-columns: repeat(2, 1fr); } }
         .bts-box { aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: 0.4s ease; background: #000; }
-        .bts-box img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            transition: 0.6s ease; filter: grayscale(100%); 
-        }
+        .bts-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; filter: grayscale(100%); }
         .bts-box:hover img { transform: scale(1.05); filter: grayscale(0%); }
 
         .software-cluster { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 30px; padding: 40px 6%; justify-items: center; }
@@ -145,22 +142,14 @@
         .sw-item:hover img { transform: translateY(-5px); filter: drop-shadow(0 0 8px var(--accent)); opacity: 1; }
         .sw-item span { display: block; font-size: 0.65rem; margin-top: 10px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* ANALYTICS */
-        .analytics-container { 
-            padding: 0 6% 80px; 
-            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
-        }
-        .analytics-item { 
-            flex: 1 1 300px; max-width: 480px;
-            border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
-            transition: 0.5s;
-        }
+        .analytics-container { padding: 0 6% 80px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .analytics-item { flex: 1 1 300px; max-width: 480px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.5s; }
         @media (max-width: 768px) { .analytics-item { flex: 1 1 100%; } }
         .analytics-item img { width: 100%; height: auto; display: block; }
         .analytics-item:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(196, 163, 107, 0.15); }
 
         .stats-grid { display: flex; justify-content: space-around; padding: 60px 6%; text-align: center; }
-        .stat-unit h2 { font-size: clamp(2rem, 5vw, 4rem); margin: 0; color: var(--accent); font-family: 'Anton', serif; font-weight: 400; }
+        .stat-unit h2 { font-size: clamp(2rem, 5vw, 4rem); margin: 0; color: var(--accent); font-family: 'Cinzel Decorative', serif; }
         .stat-unit p { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-top: 8px; font-weight: 600; }
 
         .contact-panel { padding: 80px 6%; border-top: 1px solid var(--border); background: linear-gradient(to bottom, #050505, #0a0a0a); }
@@ -173,14 +162,12 @@
         }
         .contact-links a:hover { background: var(--accent); color: #000; border-color: var(--accent); transform: translateY(-3px); }
 
-        /* CV BUTTON */
         .cv-btn { 
             position: fixed; bottom: 30px; right: 30px; background: #fff; 
             color: #000; padding: 12px 25px; border-radius: 50px; font-weight: 800; 
             text-decoration: none; z-index: 3000; font-size: 0.7rem; font-family: 'Montserrat', sans-serif;
             display: flex; align-items: center; gap: 10px; letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s;
         }
         .cv-btn:hover { background: var(--accent); transform: translateY(-5px); }
 
@@ -292,7 +279,7 @@
             <section>
                 <p class="section-label">Digital Strategy & Analytics</p>
                 <div style="font-family: 'Montserrat', sans-serif; padding: 0 6%; margin-bottom: 20px; color: var(--text-dim); font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 500;">
-                    STUDENT COORDINATOR @ OFFICIAL MEDIA TEAM ((DEPARTMENT OF MEDIA STUDIES) | CHRIST UNIVERSITY BANGALORE CENTRAL CAMPUS 
+                    STUDENT COORDINATOR @ OFFICIAL MEDIA TEAM (DEPARTMENT OF MEDIA STUDIES) | CHRIST UNIVERSITY BANGALORE CENTRAL CAMPUS 
                 </div>
                 <div class="stats-grid">
                     <div class="stat-unit"><h2>411K+</h2><p>Views</p></div>
